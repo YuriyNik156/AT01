@@ -1,5 +1,5 @@
 import unittest
-from main import add, subtract, multiply, divide
+from main import add, subtract, multiply, divide, remainder
 
 class TestMath(unittest.TestCase):
     def test_add(self):
@@ -17,6 +17,15 @@ class TestMath(unittest.TestCase):
     def test_divide(self):
         self.assertNotEqual(divide(4, 2), 3)
         self.assertEqual(divide(20, 5), 4)
+        with self.assertRaises(ValueError):
+            divide(10, 0)
+
+    def test_remainder(self):
+        self.assertEqual(remainder(10,4), 2)
+        self.assertNotEqual(remainder(25, 4), 0)
+
+        with self.assertRaises(ValueError):
+            remainder(7, 0)
 
 if __name__ == '__main__':
     unittest.main()
